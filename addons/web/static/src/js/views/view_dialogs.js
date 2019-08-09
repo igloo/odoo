@@ -121,6 +121,7 @@ var FormViewDialog = ViewDialog.extend({
             }];
 
             if (!readonly) {
+                multi_select = false; // R. Plagnard 2018-08-31,to remove <Save & New> button
                 options.buttons.unshift({
                     text: _t("Save") + ((multi_select)? " " + _t(" & Close") : ""),
                     classes: "btn-primary",

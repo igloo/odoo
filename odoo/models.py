@@ -3110,6 +3110,13 @@ class BaseModel(MetaModel('DummyModel', (object,), {'_register': False})):
 
         if unknown:
             _logger.warning("%s.write() with unknown fields: %s", self._name, ', '.join(sorted(unknown)))
+            # --- R. PLAGNARD
+            _logger.warning("_fields: {}".format(self._fields))
+            for key, val in vals.items():
+                _logger.warning("  key='{}', val='{}'".format(key, val) )
+                field = self._fields.get(key)
+                _logger.warning("  field={}".format(field) )
+            # --- R. PLAGNARD
 
         protected_fields = [self._fields[n] for n in new_vals]
         with self.env.protecting(protected_fields, self):
